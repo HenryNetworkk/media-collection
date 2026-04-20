@@ -1,0 +1,84 @@
+; This installer is an INF file (setup information file) that allows the installation of a cursor scheme through right-click > Install
+
+; Required section/value for this to work
+[Version]
+signature="$CHICAGO$"
+
+; Copy cursors to DefaultDestDir defined in DestinationDirs section below
+; Create new cursor scheme (in registry)
+[DefaultInstall]
+CopyFiles = CursorFileNames.Macro, CursorFileNames.Micro
+AddReg = CursorSchemeRegisteryEntry.Macro, CursorSchemeRegisteryEntry.Micro
+
+; 10 => Windows directory (%SystemRoot%) + subdirectory as defined in Strings section
+[DestinationDirs]
+DefaultDestDir = 10,"%CursorSchemeDirectory%"
+
+; Definition of the cursor scheme registry entry (which is what is created when a scheme is manually saved in Mouse Properties)
+[CursorSchemeRegisteryEntry.Macro]
+HKCU,"Control Panel\Cursors\Schemes","%CursorSchemeName% Macro",0x00020000,"%SYSTEMROOT%\%CursorSchemeDirectory%\Strawberry Macro\%Arrow%,%SYSTEMROOT%\%CursorSchemeDirectory%\Strawberry Macro\%Help%,%SYSTEMROOT%\%CursorSchemeDirectory%\Strawberry Macro\%AppStarting%,%SYSTEMROOT%\%CursorSchemeDirectory%\Strawberry Macro\%Wait%,%SYSTEMROOT%\%CursorSchemeDirectory%\Strawberry Macro\%Crosshair%,%SYSTEMROOT%\%CursorSchemeDirectory%\Strawberry Macro\%IBeam%,%SYSTEMROOT%\%CursorSchemeDirectory%\Strawberry Macro\%NWPen%,%SYSTEMROOT%\%CursorSchemeDirectory%\Strawberry Macro\%No%,%SYSTEMROOT%\%CursorSchemeDirectory%\Strawberry Macro\%SizeNS%,%SYSTEMROOT%\%CursorSchemeDirectory%\Strawberry Macro\%SizeWE%,%SYSTEMROOT%\%CursorSchemeDirectory%\Strawberry Macro\%SizeNWSE%,%SYSTEMROOT%\%CursorSchemeDirectory%\Strawberry Macro\%SizeNESW%,%SYSTEMROOT%\%CursorSchemeDirectory%\Strawberry Macro\%SizeAll%,%SYSTEMROOT%\%CursorSchemeDirectory%\Strawberry Macro\%UpArrow%,%SYSTEMROOT%\%CursorSchemeDirectory%\Strawberry Macro\%Hand%,%SYSTEMROOT%\%CursorSchemeDirectory%\Strawberry Macro\%Pin%,%SYSTEMROOT%\%CursorSchemeDirectory%\Strawberry Macro\%Person%"
+
+[CursorSchemeRegisteryEntry.Micro]
+HKCU,"Control Panel\Cursors\Schemes","%CursorSchemeName% Micro",0x00020000,"%SYSTEMROOT%\%CursorSchemeDirectory%\Strawberry Micro\%Arrow%,%SYSTEMROOT%\%CursorSchemeDirectory%\Strawberry Micro\%Help%,%SYSTEMROOT%\%CursorSchemeDirectory%\Strawberry Micro\%AppStarting%,%SYSTEMROOT%\%CursorSchemeDirectory%\Strawberry Micro\%Wait%,%SYSTEMROOT%\%CursorSchemeDirectory%\Strawberry Micro\%Crosshair%,%SYSTEMROOT%\%CursorSchemeDirectory%\Strawberry Micro\%IBeam%,%SYSTEMROOT%\%CursorSchemeDirectory%\Strawberry Micro\%NWPen%,%SYSTEMROOT%\%CursorSchemeDirectory%\Strawberry Micro\%No%,%SYSTEMROOT%\%CursorSchemeDirectory%\Strawberry Micro\%SizeNS%,%SYSTEMROOT%\%CursorSchemeDirectory%\Strawberry Micro\%SizeWE%,%SYSTEMROOT%\%CursorSchemeDirectory%\Strawberry Micro\%SizeNWSE%,%SYSTEMROOT%\%CursorSchemeDirectory%\Strawberry Micro\%SizeNESW%,%SYSTEMROOT%\%CursorSchemeDirectory%\Strawberry Micro\%SizeAll%,%SYSTEMROOT%\%CursorSchemeDirectory%\Strawberry Micro\%UpArrow%,%SYSTEMROOT%\%CursorSchemeDirectory%\Strawberry Micro\%Hand%,%SYSTEMROOT%\%CursorSchemeDirectory%\Strawberry Micro\%Pin%,%SYSTEMROOT%\%CursorSchemeDirectory%\Strawberry Micro\%Person%"
+
+
+; CopyFiles does not allow %strkey% tokens, which is why we have to list our cursors here in addition to the Strings section
+[CursorFileNames.Macro]
+Strawberry Macro/alt select.cur
+Strawberry Macro/busy.ani
+Strawberry Macro/default.cur
+Strawberry Macro/diagonal resize 1.cur
+Strawberry Macro/diagonal resize 2.cur
+Strawberry Macro/handwriting.cur
+Strawberry Macro/help select.cur
+Strawberry Macro/horizontal resize.cur
+Strawberry Macro/link select.cur
+Strawberry Macro/location select.cur
+Strawberry Macro/move.cur
+Strawberry Macro/person select.cur
+Strawberry Macro/precision select.cur
+Strawberry Macro/text select.cur
+Strawberry Macro/unavailable.cur
+Strawberry Macro/vertical resize.cur
+Strawberry Macro/working.ani
+
+[CursorFileNames.Micro]
+Strawberry Micro/alt select.cur
+Strawberry Micro/busy.ani
+Strawberry Micro/default.cur
+Strawberry Micro/diagonal resize 1.cur
+Strawberry Micro/diagonal resize 2.cur
+Strawberry Micro/handwriting.cur
+Strawberry Micro/help select.cur
+Strawberry Micro/horizontal resize.cur
+Strawberry Micro/link select.cur
+Strawberry Micro/location select.cur
+Strawberry Micro/move.cur
+Strawberry Micro/person select.cur
+Strawberry Micro/precision select.cur
+Strawberry Micro/text select.cur
+Strawberry Micro/unavailable.cur
+Strawberry Micro/vertical resize.cur
+Strawberry Micro/working.ani
+
+; Our scheme and cursor names, they are defined here so they can be used as %strkey% tokens
+[Strings]
+CursorSchemeDirectory = "Cursors\Strawberry"
+CursorSchemeName = "Strawberry"
+AppStarting = "working.ani"
+Arrow = "default.cur"
+Crosshair = "precision select.cur"
+Hand = "link select.cur"
+Help = "help select.cur"
+IBeam = "text select.cur"
+No = "unavailable.cur"
+NWPen = "handwriting.cur"
+Person = "person select.cur"
+Pin = "location select.cur"
+SizeAll = "move.cur"
+SizeNESW = "diagonal resize 2.cur"
+SizeNS = "vertical resize.cur"
+SizeNWSE = "diagonal resize 1.cur"
+SizeWE = "horizontal resize.cur"
+UpArrow = "alt select.cur"
+Wait = "busy.ani"
